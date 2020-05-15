@@ -1,5 +1,7 @@
 class RegionsController < ApplicationController
 
+    before_action :authenticate_user
+
     def index
         @regions = Region.all
         render json: @regions
@@ -45,6 +47,11 @@ class RegionsController < ApplicationController
 
     def region_params
         params.require(:region).permit(:name)
+    end
+
+    # Authorized only method
+    def auth
+        render json: { status: 200, msg: "You are currently Logged-in as #{current_user.username}" }
     end
 
 end

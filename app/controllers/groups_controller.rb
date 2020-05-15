@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
 
+    before_action :authenticate_user
+
     def index
         @groups = Region.find(params[:region_id]).groups
         render json: @groups
