@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     if user.destroy
       render json: { status: 200, msg: 'User has been deleted.' }
     end
-  end
+  end  
   
   private
   
